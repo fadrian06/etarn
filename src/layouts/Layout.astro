@@ -1,10 +1,12 @@
 ---
 import Head from "../components/Head.astro";
 import Header from "../components/Header.astro";
+import Icon from "../components/Icon.astro";
 import Scripts from "../components/Scripts.astro";
 import Sidebar from "../components/Sidebar.astro";
 
 type HeadProps = Parameters<typeof Head>[0];
+type IconName = Parameters<typeof Icon>[0]["name"];
 
 interface BreadcrumItem {
   href: string;
@@ -14,7 +16,7 @@ interface BreadcrumItem {
 interface Props extends HeadProps {
   description?: string;
   breadcrumbItems: BreadcrumItem[];
-  iconClasses?: string;
+  iconName?: IconName;
 }
 ---
 
@@ -26,11 +28,11 @@ interface Props extends HeadProps {
     <Sidebar />
     <main class="app-content">
       {
-        Astro.props.iconClasses && (
+        Astro.props.iconName && (
           <div class="app-title">
             <div>
               <h1>
-                <i class={Astro.props.iconClasses} />
+                <Icon name={Astro.props.iconName} />
                 {Astro.props.title}
               </h1>
               {Astro.props.description ? (
@@ -41,7 +43,7 @@ interface Props extends HeadProps {
             </div>
             <ul class="app-breadcrumb breadcrumb">
               <li class="breadcrumb-item">
-                <i class="bi bi-house-door fs-6" />
+                <Icon name="house-door" class="fs-6" />
               </li>
               {Astro.props.breadcrumbItems.map(({ href, slot }) => (
                 <li class="breadcrumb-item fs-6">

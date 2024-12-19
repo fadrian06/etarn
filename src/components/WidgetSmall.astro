@@ -1,14 +1,16 @@
 ---
-interface Props {
+import type { ComponentWithIcon } from '../types';
+import Icon from './Icon.astro';
+
+interface Props extends ComponentWithIcon {
   variant: "primary" | "info" | "warning" | "danger";
-  iconClasses: string;
   counter: number;
 }
 ---
 
 <div class="col-md-6 col-lg-4">
   <div class:list={["widget-small", Astro.props.variant, "coloured-icon"]}>
-    <i class:list={["icon", Astro.props.iconClasses, "fs-1"]}></i>
+    <Icon name={Astro.props.iconName} class="icon fs-1" />
     <div class="info">
       <h4>
         <slot />

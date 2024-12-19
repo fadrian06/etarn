@@ -1,20 +1,24 @@
 ---
 import DropdownItem from "./DropdownItem.astro";
-
+import Icon from "./Icon.astro";
 import dropdownItems from "../data/user-menu-dropdown-items.json";
 ---
 
 <li class="dropdown">
   <a class="app-nav__item" href="javascript:" data-bs-toggle="dropdown">
-    <i class="bi bi-person fs-4"></i>
+    <Icon name="person" class="fs-4" />
   </a>
   <ul class="dropdown-menu settings-menu dropdown-menu-right">
     {
       dropdownItems.map(({ href, iconClasses, slot }) => (
-        <DropdownItem href={href} iconClasses={iconClasses}>
+        <DropdownItem href={href} iconName={iconClasses}>
           {slot}
         </DropdownItem>
       ))
     }
   </ul>
 </li>
+
+<script>
+  import "bootstrap/js/dist/dropdown";
+</script>

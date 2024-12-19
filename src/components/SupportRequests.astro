@@ -1,20 +1,21 @@
 <div class="col-md-6">
   <div class="tile">
     <h3 class="tile-title">Peticiones de soporte</h3>
-    <div class="ratio ratio-16x9">
+    <div class="ratio ratio-1x1">
       <div id="supportRequestChart"></div>
     </div>
   </div>
 </div>
 
-<script is:inline>
-  const supportRequests = {
+<script>
+  import { createAndObserveEchart } from "../scripts/helpers";
+
+  createAndObserveEchart("#supportRequestChart", {
     tooltip: {
       trigger: "item",
     },
     legend: {
       orient: "horizontal",
-      left: "left",
     },
     series: [
       {
@@ -22,9 +23,9 @@
         type: "pie",
         radius: "50%",
         data: [
-          { value: 300, name: "Progreso" },
-          { value: 50, name: "Retrasadas" },
-          { value: 100, name: "Completas" },
+          { value: 30, name: "Progreso" },
+          { value: 5, name: "Retrasadas" },
+          { value: 10, name: "Completas" },
         ],
         emphasis: {
           itemStyle: {
@@ -35,19 +36,5 @@
         },
       },
     ],
-  };
-
-  document.addEventListener("DOMContentLoaded", () => {
-    const supportChartElement = document.getElementById("supportRequestChart");
-
-    const supportChart = echarts.init(supportChartElement, null, {
-      renderer: "svg",
-    });
-
-    supportChart.setOption(supportRequests);
-
-    new ResizeObserver(() => supportChart.resize()).observe(
-      supportChartElement,
-    );
   });
 </script>

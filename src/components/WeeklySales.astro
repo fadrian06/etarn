@@ -1,14 +1,16 @@
 <div class="col-md-6">
   <div class="tile">
     <h3 class="tile-title">Ventas - Última semana</h3>
-    <div class="ratio ratio-16x9">
+    <div class="ratio ratio-1x1">
       <div id="salesChart"></div>
     </div>
   </div>
 </div>
 
-<script is:inline>
-  const salesData = {
+<script>
+  import { createAndObserveEchart } from "../scripts/helpers";
+
+  createAndObserveEchart("#salesChart", {
     xAxis: {
       type: "category",
       data: ["Lun", "Mar", "Mie", "Jue", "Vie", "Sáb", "Dom"],
@@ -16,31 +18,19 @@
     yAxis: {
       type: "value",
       axisLabel: {
-        formatter: "${value}",
+        formatter: "💲{value}",
       },
     },
     series: [
       {
-        data: [150, 230, 224, 218, 135, 147, 260],
+        data: [15, 23, 22.4, 21.8, 13.5, 14.7, 26],
         type: "line",
         smooth: true,
       },
     ],
     tooltip: {
       trigger: "axis",
-      formatter: "<b>{b0}:</b> ${c0}",
+      formatter: "<b>{b0}:</b> 💲{c0}",
     },
-  };
-
-  document.addEventListener('DOMContentLoaded', () => {
-    const salesChartElement = document.getElementById("salesChart");
-
-    const salesChart = echarts.init(salesChartElement, null, {
-      renderer: "svg",
-    });
-
-    salesChart.setOption(salesData);
-
-    new ResizeObserver(() => salesChart.resize()).observe(salesChartElement);
-  })
+  });
 </script>

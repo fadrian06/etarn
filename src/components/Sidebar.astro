@@ -16,7 +16,7 @@ import MenuItem from "./MenuItem.astro";
   <ul class="app-menu">
     {
       menuItems.map(({ href, iconClasses, slot, subItems }) => (
-        <MenuItem href={href} iconClasses={iconClasses} subItems={subItems}>
+        <MenuItem href={href} iconName={iconClasses} subItems={subItems}>
           {slot}
         </MenuItem>
       ))

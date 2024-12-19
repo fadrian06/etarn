@@ -1,12 +1,14 @@
 ---
+import type { ComponentWithIcon } from "../types";
+import Icon from "./Icon.astro"
+
 interface SubItem {
   slot: string;
   href: string;
 }
 
-interface Props {
+interface Props extends ComponentWithIcon {
   subItems?: SubItem[];
-  iconClasses: string;
   href?: string;
 }
 
@@ -21,17 +23,17 @@ const isActive = false;
         href="javascript:"
         data-toggle="treeview"
       >
-        <i class:list={["app-menu__icon", Astro.props.iconClasses]} />
+        <Icon name={Astro.props.iconName} class="app-menu__icon" />
         <span class="app-menu__label">
           <slot />
         </span>
-        <i class="treeview-indicator bi bi-chevron-right" />
+        <Icon name="chevron-right" class="treeview-indicator" />
       </a>
       <ul class="treeview-menu">
         {Astro.props.subItems.map(({ slot, href }) => (
           <li>
             <a class="treeview-item" href={href}>
-              <i class="icon bi bi-circle-fill" />
+              <Icon name="circle-fill" class="icon" />
               {slot}
             </a>
           </li>
@@ -44,7 +46,7 @@ const isActive = false;
         class:list={["app-menu__item", { active: isActive }]}
         href={Astro.props.href}
       >
-        <i class:list={["app-menu__icon", Astro.props.iconClasses]} />
+        <Icon name={Astro.props.iconName} class="app-menu__icon" />
         <span class="app-menu__label">
           <slot />
         </span>
