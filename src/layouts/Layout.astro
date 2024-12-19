@@ -1,22 +1,21 @@
 ---
-import Head from "../components/Head.astro";
-import Header from "../components/Header.astro";
-import Icon from "../components/Icon.astro";
-import Scripts from "../components/Scripts.astro";
-import Sidebar from "../components/Sidebar.astro";
+import Head from "@/components/Head.astro";
+import Header from "@/components/Header.astro";
+import Icon from "@/components/Icon.astro";
+import Scripts from "@/components/Scripts.astro";
+import Sidebar from "@/components/Sidebar.astro";
+import type { ComponentWithIcon } from "@/types";
 
 type HeadProps = Parameters<typeof Head>[0];
-type IconName = Parameters<typeof Icon>[0]["name"];
 
 interface BreadcrumItem {
   href: string;
   slot: string;
 }
 
-interface Props extends HeadProps {
+interface Props extends HeadProps, ComponentWithIcon {
   description?: string;
-  breadcrumbItems: BreadcrumItem[];
-  iconName?: IconName;
+  breadcrumbItems?: BreadcrumItem[];
 }
 ---
 

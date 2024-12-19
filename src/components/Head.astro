@@ -1,6 +1,5 @@
 ---
-// Main CSS
-import "../sass/main.scss";
+import "@/sass/main.scss";
 
 interface Props {
   title: string
@@ -13,4 +12,5 @@ interface Props {
   <base href={import.meta.env.BASE_URL} />
   <link rel="icon" href="./favicon.png" />
   <title>{Astro.props.title} - ETARN</title>
+  <slot />
 </head>

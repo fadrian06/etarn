@@ -1,6 +1,6 @@
 [
   {
-    "href": "./inicio",
+    "href": "./app",
     "iconClasses": "bi bi-speedometer",
     "slot": "Inicio"
   }

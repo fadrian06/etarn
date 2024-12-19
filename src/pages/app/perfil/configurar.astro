@@ -1,15 +1,9 @@
 ---
-import Icon from "../../components/Icon.astro";
-import Layout from "../../layouts/Layout.astro";
+import Icon from "@/components/Icon.astro";
+import Layout from "@/layouts/Layout.astro";
 ---
 
-<Layout
-  breadcrumbItems={[
-    { href: "./perfil", slot: "Perfil" },
-    { href: "./perfil/configurar", slot: "Configurar" },
-  ]}
-  title="Configurar perfil"
->
+<Layout title="Configurar perfil">
   <div class="row user">
     <div class="col-md-12">
       <div class="profile">

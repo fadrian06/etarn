@@ -1,13 +1,16 @@
 ---
-import menuItems from "../data/menu-items.json";
-import MenuItem from "./MenuItem.astro";
+import menuItems from "@/data/menu-items.json";
+import MenuItem from "@/components/MenuItem.astro";
 ---
 
 <!-- Sidebar menu-->
 <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
 <aside class="app-sidebar">
   <div class="app-sidebar__user">
-    <img class="app-sidebar__user-avatar" src="./images/user-avatar.png" />
+    <img
+      class="app-sidebar__user-avatar ratio ratio-1x1"
+      src="./images/user-avatar.png"
+    />
     <div>
       <p class="app-sidebar__user-name">John Doe</p>
       <p class="app-sidebar__user-designation">Frontend Developer</p>

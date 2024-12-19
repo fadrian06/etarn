@@ -9,5 +9,6 @@ export default defineConfig({
   integrations: [svelte()],
   build: {
     format: 'file'
-  }
+  },
+  output: 'hybrid'
 });
