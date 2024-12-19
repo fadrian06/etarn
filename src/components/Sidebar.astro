@@ -1,0 +1,25 @@
+---
+import menuItems from "../data/menu-items.json";
+import MenuItem from "./MenuItem.astro";
+---
+
+<!-- Sidebar menu-->
+<div class="app-sidebar__overlay" data-toggle="sidebar"></div>
+<aside class="app-sidebar">
+  <div class="app-sidebar__user">
+    <img class="app-sidebar__user-avatar" src="./images/user-avatar.png" />
+    <div>
+      <p class="app-sidebar__user-name">John Doe</p>
+      <p class="app-sidebar__user-designation">Frontend Developer</p>
+    </div>
+  </div>
+  <ul class="app-menu">
+    {
+      menuItems.map(({ href, iconClasses, slot, subItems }) => (
+        <MenuItem href={href} iconClasses={iconClasses} subItems={subItems}>
+          {slot}
+        </MenuItem>
+      ))
+    }
+  </ul>
+</aside>

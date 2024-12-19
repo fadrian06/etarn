@@ -1,0 +1,10 @@
+---
+interface Props extends astroHTML.JSX.InputHTMLAttributes {}
+---
+
+<div class="mb-3">
+  <label class="form-label">
+    <slot />
+  </label>
+  <input class="form-control" {...Astro.props} />
+</div>

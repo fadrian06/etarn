@@ -1,0 +1,53 @@
+<div class="col-md-6">
+  <div class="tile">
+    <h3 class="tile-title">Peticiones de soporte</h3>
+    <div class="ratio ratio-16x9">
+      <div id="supportRequestChart"></div>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  const supportRequests = {
+    tooltip: {
+      trigger: "item",
+    },
+    legend: {
+      orient: "horizontal",
+      left: "left",
+    },
+    series: [
+      {
+        name: "Peticiones de soporte",
+        type: "pie",
+        radius: "50%",
+        data: [
+          { value: 300, name: "Progreso" },
+          { value: 50, name: "Retrasadas" },
+          { value: 100, name: "Completas" },
+        ],
+        emphasis: {
+          itemStyle: {
+            shadowBlur: 10,
+            shadowOffsetX: 0,
+            shadowColor: "rgba(0, 0, 0, 50%)",
+          },
+        },
+      },
+    ],
+  };
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const supportChartElement = document.getElementById("supportRequestChart");
+
+    const supportChart = echarts.init(supportChartElement, null, {
+      renderer: "svg",
+    });
+
+    supportChart.setOption(supportRequests);
+
+    new ResizeObserver(() => supportChart.resize()).observe(
+      supportChartElement,
+    );
+  });
+</script>

@@ -1,0 +1,46 @@
+<div class="col-md-6">
+  <div class="tile">
+    <h3 class="tile-title">Ventas - Última semana</h3>
+    <div class="ratio ratio-16x9">
+      <div id="salesChart"></div>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  const salesData = {
+    xAxis: {
+      type: "category",
+      data: ["Lun", "Mar", "Mie", "Jue", "Vie", "Sáb", "Dom"],
+    },
+    yAxis: {
+      type: "value",
+      axisLabel: {
+        formatter: "${value}",
+      },
+    },
+    series: [
+      {
+        data: [150, 230, 224, 218, 135, 147, 260],
+        type: "line",
+        smooth: true,
+      },
+    ],
+    tooltip: {
+      trigger: "axis",
+      formatter: "<b>{b0}:</b> ${c0}",
+    },
+  };
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const salesChartElement = document.getElementById("salesChart");
+
+    const salesChart = echarts.init(salesChartElement, null, {
+      renderer: "svg",
+    });
+
+    salesChart.setOption(salesData);
+
+    new ResizeObserver(() => salesChart.resize()).observe(salesChartElement);
+  })
+</script>

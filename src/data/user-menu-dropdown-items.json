@@ -1,0 +1,12 @@
+[
+  {
+    "href": "./perfil/configurar",
+    "iconClasses": "bi bi-gear",
+    "slot": "Configurar perfil"
+  },
+  {
+    "href": "./salir",
+    "iconClasses": "bi bi-box-arrow-right",
+    "slot": "Salir"
+  }
+]

@@ -1,0 +1,21 @@
+---
+interface Props {
+  variant: "primary" | "info" | "warning" | "danger";
+  iconClasses: string;
+  counter: number;
+}
+---
+
+<div class="col-md-6 col-lg-4">
+  <div class:list={["widget-small", Astro.props.variant, "coloured-icon"]}>
+    <i class:list={["icon", Astro.props.iconClasses, "fs-1"]}></i>
+    <div class="info">
+      <h4>
+        <slot />
+      </h4>
+      <p>
+        <b>{Astro.props.counter}</b>
+      </p>
+    </div>
+  </div>
+</div>

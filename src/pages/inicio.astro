@@ -1,0 +1,24 @@
+---
+import SupportRequests from "../components/SupportRequests.astro";
+import WeeklySales from "../components/WeeklySales.astro";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout
+  title="Inicio"
+  breadcrumbItems={[{ href: "./inicio", slot: "Inicio" }]}
+  iconClasses="bi bi-speedometer"
+>
+  <div class="row">
+  </div>
+  <div class="row">
+  </div>
+
+  <Fragment slot="specific-js">
+    <!-- Page specific javascripts-->
+    <script
+      is:inline
+      src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"
+    ></script>
+  </Fragment>
+</Layout>

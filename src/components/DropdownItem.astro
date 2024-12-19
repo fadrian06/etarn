@@ -1,0 +1,13 @@
+---
+interface Props {
+  href: string;
+  iconClasses: string;
+}
+---
+
+<li>
+  <a class="dropdown-item" href={Astro.props.href}>
+    <i class:list={[Astro.props.iconClasses, "me-2 fs-5"]}></i>
+    <slot />
+  </a>
+</li>

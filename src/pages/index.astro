@@ -1,11 +1,45 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import FeaturesCard from "../components/FeaturesCard.astro";
+import Head from "../components/Head.astro";
+import LandingIcons from "../components/LandingIcons.astro";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import featuresCards from "../data/features-cards.json";
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<!doctype html>
+<html>
+  <Head title="SRCN" />
+  <body class="landing-page">
+    <LandingIcons />
+    <section class="landing-hero">
+      <div class="landing-hero-overlay"></div>
+      <div class="landing-hero-content">
+        <h1 class="landing-hero-title">SRCN - ETARN</h1>
+        <p class="landing-hero-description">
+          Sistema de Registro y Control de Notas - Escuela Técnica Agropecuaria
+          Robinsoniana Nacional
+        </p>
+        <div>
+          <a class="btn btn-primary me-4" href="./ingresar">Ingresar</a>
+          <a class="btn btn-primary" href="./registrarme"> Registrarme </a>
+        </div>
+        <img
+          class="landing-hero-banner"
+          src="./images/banner.png"
+          alt="Panel de administración de SRCN - ETARN"
+        />
+      </div>
+    </section>
+    <section class="features">
+      <h1 class="features-title">Características</h1>
+      <div class="features-cards">
+        {
+          featuresCards.map(({ iconHref, slot }) => (
+            <FeaturesCard iconHref={iconHref}>{slot}</FeaturesCard>
+          ))
+        }
+      </div>
+    </section>
+    <footer class="landing-footer">UPTM © PNFI</footer>
+  </body>
+</html>

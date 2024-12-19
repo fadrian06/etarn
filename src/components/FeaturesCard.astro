@@ -1,0 +1,16 @@
+---
+interface Props {
+  iconHref: string;
+}
+---
+
+<div class="features-card">
+  <div class="feature-icon-backdrop">
+    <svg class="feature-icon">
+      <use xlink:href={Astro.props.iconHref}></use>
+    </svg>
+  </div>
+  <p class="feature-description">
+    <slot />
+  </p>
+</div>

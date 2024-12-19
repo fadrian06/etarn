@@ -1,0 +1,22 @@
+[
+  {
+    "iconHref": "#icon-globe",
+    "slot": "Fácil de usar"
+  },
+  {
+    "iconHref": "#icon-smartphone",
+    "slot": "Adaptable a móviles"
+  },
+  {
+    "iconHref": "#icon-chart",
+    "slot": "Integración para mostrar gráficos adaptables"
+  },
+  {
+    "iconHref": "#icon-layout",
+    "slot": "Más de siete páginas incluyendo ingreso, perfil de usuario y página amigable de impresión de reportes"
+  },
+  {
+    "iconHref": "#icon-grid",
+    "slot": "Tablas con funciones de ordenamiento, búsqueda y paginado"
+  }
+]

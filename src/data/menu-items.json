@@ -1,0 +1,7 @@
+[
+  {
+    "href": "./inicio",
+    "iconClasses": "bi bi-speedometer",
+    "slot": "Inicio"
+  }
+]
