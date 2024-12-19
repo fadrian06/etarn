@@ -67,7 +67,9 @@ import Scripts from "../components/Scripts.astro";
       </div>
     </section>
     <Scripts />
-    <script is:inline>
+    <script>
+      import $ from 'jquery'
+
       // Login Page Flipbox control
       $('.login-content [data-toggle="flip"]').click(() => {
         $(".login-box").toggleClass("flipped");
