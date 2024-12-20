@@ -1,0 +1,62 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import employees from "@/data/employees.json";
+---
+
+<Layout
+  title="Data Table"
+  iconName="table"
+  description="Table to display analytical data effectively"
+  breadcrumbItems={[
+    { href: "javascript:", slot: "Tables" },
+    { href: "./app/table-data-table", slot: "Data Table" },
+  ]}
+>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="tile">
+        <div class="tile-body">
+          <div class="table-responsive">
+            <table class="table table-hover table-bordered" id="sampleTable">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Position</th>
+                  <th>Office</th>
+                  <th>Age</th>
+                  <th>Start date</th>
+                  <th>Salary</th>
+                </tr>
+              </thead>
+              <tbody>
+                {
+                  employees.map(
+                    ({ name, position, office, age, startDate, salary }) => (
+                      <tr>
+                        <td>{name}</td>
+                        <td>{position}</td>
+                        <td>{office}</td>
+                        <td>{age}</td>
+                        <td>{startDate}</td>
+                        <td>{salary}</td>
+                      </tr>
+                    ),
+                  )
+                }
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <Fragment slot="specific-js">
+    <script>
+      import DataTable from "datatables.net-bs5";
+      import language from "datatables.net-plugins/i18n/es-CO";
+
+      new DataTable("#sampleTable", { language });
+    </script>
+  </Fragment>
+</Layout>
