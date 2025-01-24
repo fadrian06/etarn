@@ -3,5 +3,10 @@
     "href": "./app",
     "iconClasses": "bi bi-speedometer",
     "slot": "Inicio"
+  },
+  {
+    "href": "./usuarios",
+    "iconClasses": "bi bi-people",
+    "slot": "Usuarios"
   }
 ]

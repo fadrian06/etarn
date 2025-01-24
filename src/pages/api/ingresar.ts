@@ -1,4 +1,4 @@
-import { getUserByEmail } from '@/models/User'
+import { getUserByEmail } from '@/services/user'
 import type { APIRoute } from 'astro'
 import { compare } from 'bcrypt'
 
