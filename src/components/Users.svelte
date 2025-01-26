@@ -5,18 +5,13 @@
   import 'sweetalert2/dist/sweetalert2.min.css';
   import Icon from './Icon.svelte';
   import { htmlPattern, patternTitles } from '@/patterns';
+  import { getToast } from '@/utils';
 
   export let users: User[];
   export let loggedUser: User | null;
   let loading = false;
 
-  const toast = Swal.mixin({
-    toast: true,
-    position: 'top-end',
-    showConfirmButton: false,
-    timer: 3000,
-    timerProgressBar: true,
-  });
+  const toast = getToast();
 
   function handleDelete(userId: User['id']) {
     Swal.fire({
