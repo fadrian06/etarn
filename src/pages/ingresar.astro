@@ -80,7 +80,8 @@ import Scripts from "@/components/Scripts.astro";
           class="forget-form"
           id="register-form"
           method="post"
-          action="./api/registrarme">
+          action="./api/registrarme"
+        >
           <h4 class="login-head">
             <Icon name="person" class="me-2" />
             Registrarme
@@ -113,7 +114,7 @@ import Scripts from "@/components/Scripts.astro";
       $('.login-content [data-toggle="flip"]').on("click", ({ target }) => {
         $(".login-box").toggleClass("flipped");
         $(".login-box form").hide();
-        $(target.getAttribute('href') as string).fadeIn()
+        $(target.getAttribute("href") as string).fadeIn();
 
         return false;
       });
