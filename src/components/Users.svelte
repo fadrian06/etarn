@@ -203,11 +203,16 @@
               required
               minlength={3}
               pattern={htmlPattern.name}
-              title={patternTitles.name}>Nombre</Input
+              title={patternTitles.name}
+              disabled={loading}
             >
+              Nombre
+            </Input>
           </td>
           <td>
-            <Input type="email" name="email" required>Correo electrónico</Input>
+            <Input type="email" name="email" required disabled={loading}
+              >Correo electrónico</Input
+            >
           </td>
           <td>
             <Input
@@ -215,8 +220,11 @@
               name="password"
               required
               pattern={htmlPattern.password}
-              title={patternTitles.password}>Contraseña</Input
+              title={patternTitles.password}
+              disabled={loading}
             >
+              Contraseña
+            </Input>
           </td>
           <td></td>
           <td>
