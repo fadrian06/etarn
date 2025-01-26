@@ -6,9 +6,13 @@ const PUBLIC_URLS = Object.freeze(["ingresar", "registrarse", "api"]);
 
 export const onRequest = defineMiddleware(async (context, next) => {
 	for (const publicUrl of PUBLIC_URLS) {
-		if (context.url.href.includes(publicUrl)) {
+		if (context.url.pathname.includes(publicUrl)) {
 			return next();
 		}
+	}
+
+	if (context.url.pathname === "/") {
+		return next();
 	}
 
 	const id = new URL(context.url).searchParams.get(SESSION_QUERY_PARAM_NAME);
@@ -19,7 +23,7 @@ export const onRequest = defineMiddleware(async (context, next) => {
 		return context.redirect("/ingresar");
 	}
 
-	context.locals.loggedUser = loggedUser;
+	context.locals = { ...context.locals, loggedUser };
 
 	return next();
 });
