@@ -9,5 +9,10 @@
     "href": "./usuarios",
     "iconClasses": "bi bi-people",
     "slot": "Usuarios"
+  },
+  {
+    "href": "./respaldar",
+    "iconClasses": "bi bi-cloud-download",
+    "slot": "Respaldar"
   }
 ]

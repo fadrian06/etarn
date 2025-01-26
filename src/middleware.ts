@@ -1,6 +1,6 @@
 import { getUserById } from "@/services/user";
 import { defineMiddleware } from "astro:middleware";
-import { SESSION_QUERY_PARAM_NAME } from './configs';
+import { SESSION_QUERY_PARAM_NAME } from "./configs";
 
 const PUBLIC_URLS = Object.freeze(["ingresar", "registrarse", "api"]);
 
