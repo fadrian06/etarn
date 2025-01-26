@@ -4,18 +4,14 @@ import Header from "@/components/Header.astro";
 import Icon from "@/components/Icon.astro";
 import Scripts from "@/components/Scripts.astro";
 import Sidebar from "@/components/Sidebar.astro";
-import type { ComponentWithIcon } from "@/types";
+import type { ComponentWithIcon, BreadcrumbItem } from "@/types";
+import Breadcrumbs from "@/components/Breadcrumbs.astro";
 
 type HeadProps = Parameters<typeof Head>[0];
 
-interface BreadcrumItem {
-  href: string;
-  slot: string;
-}
-
 interface Props extends HeadProps, ComponentWithIcon {
   description?: string;
-  breadcrumbItems?: BreadcrumItem[];
+  breadcrumbItems?: BreadcrumbItem[];
 }
 ---
 
@@ -40,16 +36,7 @@ interface Props extends HeadProps, ComponentWithIcon {
                 <p>&nbsp;</p>
               )}
             </div>
-            <ul class="app-breadcrumb breadcrumb">
-              <li class="breadcrumb-item">
-                <Icon name="house-door" class="fs-6" />
-              </li>
-              {Astro.props.breadcrumbItems?.map(({ href, slot }) => (
-                <li class="breadcrumb-item fs-6">
-                  <a href={href}>{slot}</a>
-                </li>
-              ))}
-            </ul>
+            <Breadcrumbs breadcrumbItems={Astro.props.breadcrumbItems} />
           </div>
         )
       }

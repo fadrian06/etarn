@@ -2,11 +2,15 @@
 import Users from "@/components/Users.svelte";
 import Layout from "@/layouts/Layout.astro";
 import { getUsers } from "@/services/user";
+import type {User} from "@/types"
 
 const users = await getUsers()
 const { loggedUser } = Astro.locals as { loggedUser: User | null };
 ---
 
-<Layout title="Usuarios" iconName="people" breadcrumbItems={[]}>
+<Layout title="Usuarios" iconName="people" breadcrumbItems={[{
+  href: '/usuarios',
+  slot: 'Usuarios'
+}]}>
   <Users client:visible users={users} loggedUser={loggedUser} />
 </Layout>

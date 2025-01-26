@@ -17,3 +17,8 @@ export interface User {
 	readonly phoneJob?: string
 	readonly phoneHome?: string
 }
+
+export interface BreadcrumbItem {
+  href: string;
+  slot: string;
+}

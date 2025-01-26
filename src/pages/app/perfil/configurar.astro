@@ -9,7 +9,20 @@ import { SESSION_QUERY_PARAM_NAME } from "@/configs";
 const { loggedUser } = Astro.locals as { loggedUser: User | null };
 ---
 
-<Layout title="Configurar perfil" iconName="person-gear">
+<Layout
+  title="Configurar perfil"
+  iconName="person-gear"
+  breadcrumbItems={[
+    {
+      href: "/app/perfil",
+      slot: "Perfil",
+    },
+    {
+      href: "/app/perfil/configurar",
+      slot: "Configurar",
+    },
+  ]}
+>
   <div class="row user">
     <div class="col-md-12">
       <div class="profile">

@@ -1,0 +1,29 @@
+---
+import type { BreadcrumbItem } from "@/types";
+import Icon from "@/components/Icon.astro";
+import { SESSION_QUERY_PARAM_NAME } from "@/configs";
+
+interface Props {
+  breadcrumbItems?: BreadcrumbItem[];
+}
+
+function addSessionToHref(href: string): string {
+  return `${href}?${SESSION_QUERY_PARAM_NAME}=${new URL(Astro.request.url).searchParams.get(SESSION_QUERY_PARAM_NAME)}`;
+}
+---
+
+<ul class="app-breadcrumb breadcrumb">
+  <li class="breadcrumb-item">
+    <Icon name="house-door" class="fs-6" />
+  </li>
+  <li class="breadcrumb-item fs-6">
+    <a href={addSessionToHref("/app")}>Inicio</a>
+  </li>
+  {
+    Astro.props.breadcrumbItems?.map(({ href, slot }) => (
+      <li class="breadcrumb-item fs-6">
+        <a href={addSessionToHref(href)}>{slot}</a>
+      </li>
+    ))
+  }
+</ul>

@@ -5,6 +5,11 @@
     "slot": "Configurar perfil"
   },
   {
+    "href": "./app/perfil",
+    "iconClasses": "bi bi-person",
+    "slot": "Ver perfil"
+  },
+  {
     "href": "./app/salir",
     "iconClasses": "bi bi-box-arrow-right",
     "slot": "Salir"
