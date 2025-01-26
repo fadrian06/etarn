@@ -4,8 +4,9 @@ import Layout from "@/layouts/Layout.astro";
 import { getUsers } from "@/services/user";
 
 const users = await getUsers()
+const { loggedUser } = Astro.locals as { loggedUser: User | null };
 ---
 
 <Layout title="Usuarios" iconName="people" breadcrumbItems={[]}>
-  <Users client:visible users={users} />
+  <Users client:visible users={users} loggedUser={loggedUser} />
 </Layout>

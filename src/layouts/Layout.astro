@@ -44,7 +44,7 @@ interface Props extends HeadProps, ComponentWithIcon {
               <li class="breadcrumb-item">
                 <Icon name="house-door" class="fs-6" />
               </li>
-              {Astro.props.breadcrumbItems.map(({ href, slot }) => (
+              {Astro.props.breadcrumbItems?.map(({ href, slot }) => (
                 <li class="breadcrumb-item fs-6">
                   <a href={href}>{slot}</a>
                 </li>

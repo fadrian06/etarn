@@ -1,16 +1,16 @@
-import { getUserByEmail } from '@/services/user'
-import type { APIRoute } from 'astro'
-import { compare } from 'bcrypt'
+import { getUserByEmail } from "@/services/user";
+import type { APIRoute } from "astro";
+import { compare } from "bcrypt";
 
 export const POST: APIRoute = async ({ request, redirect }) => {
-  const formData = await request.formData()
-  const user = await getUserByEmail(formData.get('email')?.toString() || '')
+	const formData = await request.formData();
+	const user = await getUserByEmail(String(formData.get("email")));
 
-  if (
-    !(await compare(formData.get('password')?.toString() || '', user?.password || ''))
-  ) {
-    return redirect('/ingresar')
-  }
+	if (
+		!(await compare(String(formData.get("password")), String(user?.password)))
+	) {
+		return redirect("/ingresar");
+	}
 
-  return redirect('/app')
-}
+	return redirect(`/app?session=${user?.id}`);
+};

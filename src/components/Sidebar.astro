@@ -1,9 +1,11 @@
 ---
 import menuItems from "@/data/menu-items.json";
 import MenuItem from "@/components/MenuItem.astro";
+import type { IconName, User } from "@/types";
+
+const { loggedUser } = Astro.locals as { loggedUser: User | null };
 ---
 
-<!-- Sidebar menu-->
 <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
 <aside class="app-sidebar">
   <div class="app-sidebar__user">
@@ -12,14 +14,20 @@ import MenuItem from "@/components/MenuItem.astro";
       src="./images/user-avatar.png"
     />
     <div>
-      <p class="app-sidebar__user-name">John Doe</p>
-      <p class="app-sidebar__user-designation">Frontend Developer</p>
+      <p class="app-sidebar__user-name">{loggedUser?.name}</p>
+      <p class="app-sidebar__user-designation">
+        {loggedUser?.admin ? "Administrador" : "Secretario"}
+      </p>
     </div>
   </div>
   <ul class="app-menu">
     {
       menuItems.map(({ href, iconClasses, slot, subItems }) => (
-        <MenuItem href={href} iconName={iconClasses} subItems={subItems}>
+        <MenuItem
+          href={href}
+          iconName={iconClasses as IconName}
+          subItems={subItems || undefined}
+        >
           {slot}
         </MenuItem>
       ))

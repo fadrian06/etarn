@@ -1,16 +1,21 @@
 ---
 import Icon from "@/components/Icon.astro";
 import Layout from "@/layouts/Layout.astro";
+import Input from "@/components/Input.astro";
+import { htmlPattern, patternTitles } from "@/patterns";
+import type { User } from "@/types";
+
+const { loggedUser } = Astro.locals as { loggedUser: User | null };
 ---
 
-<Layout title="Configurar perfil">
+<Layout title="Configurar perfil" iconName="person-gear">
   <div class="row user">
     <div class="col-md-12">
       <div class="profile">
-        <div class="info">
+        <div class="info w-100">
           <img class="user-img" src="./images/user-avatar.png" />
-          <h4>John Doe</h4>
-          <p>FrontEnd Developer</p>
+          <h4>{loggedUser?.name}</h4>
+          <p>{loggedUser?.admin ? "Administrador" : "Secretario"}</p>
         </div>
         <div class="cover-image"></div>
       </div>
@@ -35,38 +40,88 @@ import Layout from "@/layouts/Layout.astro";
         <div class="tab-pane active" id="user-settings">
           <div class="tile user-settings">
             <h4 class="line-head">Datos personales</h4>
-            <form method="post">
+            <form
+              method="post"
+              action={`/api/perfil/datos-personales?session=${loggedUser?.id}`}
+            >
               <div class="row mb-4">
                 <div class="col-md-6">
-                  <label>Nombre</label>
-                  <input class="form-control" name="name" required />
+                  <Input
+                    name="name"
+                    required
+                    minlength={3}
+                    pattern={htmlPattern.name}
+                    title={patternTitles.name}
+                    value={loggedUser?.name.split(" ")[0] || ""}
+                  >
+                    Nombre
+                  </Input>
                 </div>
                 <div class="col-md-6">
-                  <label>Apellido</label>
-                  <input class="form-control" name="lastName" required />
+                  <Input
+                    name="lastName"
+                    required
+                    minlength={3}
+                    pattern={htmlPattern.name}
+                    title={patternTitles.name}
+                    value={loggedUser?.name.split(" ")[1] || ""}
+                  >
+                    Apellido
+                  </Input>
                 </div>
               </div>
               <div class="row">
-                <div class="col-md-12 mb-4">
-                  <label>Correo electrónico</label>
-                  <input
-                    class="form-control"
+                <div class="col-md-12">
+                  <Input
                     type="email"
                     name="email"
                     required
-                  />
+                    value={loggedUser?.email || ""}
+                  >
+                    Correo electrónico
+                  </Input>
                 </div>
-                <div class="col-md-12 mb-4">
-                  <label>Teléfono personal</label>
-                  <input class="form-control" type="tel" name="tel[personal]" />
+                <div class="col-md-12">
+                  <Input
+                    type="tel"
+                    name="phonePersonal"
+                    required
+                    minlength={11}
+                    maxlength={13}
+                    pattern={htmlPattern.phone}
+                    title={patternTitles.phone}
+                    value={loggedUser?.phonePersonal || ""}
+                  >
+                    Teléfono personal
+                  </Input>
                 </div>
-                <div class="col-md-12 mb-4">
-                  <label>Teléfono laboral</label>
-                  <input class="form-control" type="tel" name="tel[job]" />
+                <div class="col-md-12">
+                  <Input
+                    type="tel"
+                    name="phoneJob"
+                    required
+                    minlength={11}
+                    maxlength={13}
+                    pattern={htmlPattern.phone}
+                    title={patternTitles.phone}
+                    value={loggedUser?.phoneJob || ""}
+                  >
+                    Teléfono laboral
+                  </Input>
                 </div>
-                <div class="col-md-12 mb-4">
-                  <label>Teléfono de hogar</label>
-                  <input class="form-control" type="tel" name="tel[home]" />
+                <div class="col-md-12">
+                  <Input
+                    type="tel"
+                    name="phoneHome"
+                    required
+                    minlength={11}
+                    maxlength={13}
+                    pattern={htmlPattern.phone}
+                    title={patternTitles.phone}
+                    value={loggedUser?.phoneHome || ""}
+                  >
+                    Teléfono de hogar
+                  </Input>
                 </div>
               </div>
               <div class="row mb-10">

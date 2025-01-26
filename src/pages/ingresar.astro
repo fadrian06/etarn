@@ -3,6 +3,7 @@ import Head from "@/components/Head.astro";
 import Icon from "@/components/Icon.astro";
 import Input from "@/components/Input.astro";
 import Scripts from "@/components/Scripts.astro";
+import { htmlPattern, patternTitles } from "@/patterns";
 ---
 
 <!doctype html>
@@ -80,14 +81,27 @@ import Scripts from "@/components/Scripts.astro";
           class="forget-form"
           id="register-form"
           method="post"
-          action="./api/registrarme"
+          action="./api/registrarse"
         >
           <h4 class="login-head">
             <Icon name="person" class="me-2" />
             Registrarme
           </h4>
+          <Input
+            name="name"
+            required
+            minlength={3}
+            pattern={htmlPattern.name}
+            title={patternTitles.name}>NOMBRE</Input
+          >
           <Input type="email" name="email" required>CORREO ELECTRÓNICO</Input>
-          <Input type="password" name="password" required>CONTRASEÑA</Input>
+          <Input
+            type="password"
+            name="password"
+            required
+            pattern={htmlPattern.password}
+            title={patternTitles.password}>CONTRASEÑA</Input
+          >
           <div class="mb-3">
             <div class="utility">
               <p class="semibold-text mb-2">
@@ -127,8 +141,12 @@ import Scripts from "@/components/Scripts.astro";
     overflow-y: scroll;
   }
 
-  .login-content .login-box,
-  .login-content .login-box.flipped {
+  .login-content .login-box {
     min-height: 400px;
+  }
+
+  .login-content .login-box.flipped {
+    min-height: 475px;
+    margin-bottom: 2rem;
   }
 </style>

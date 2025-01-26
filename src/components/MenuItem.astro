@@ -1,6 +1,6 @@
 ---
 import type { ComponentWithIcon } from "@/types";
-import Icon from "@/components/Icon.astro"
+import Icon from "@/components/Icon.astro";
 
 interface SubItem {
   slot: string;
@@ -13,6 +13,10 @@ interface Props extends ComponentWithIcon {
 }
 
 const isActive = false;
+
+function addSessionToHref(href: string): string {
+  return `${href}?session=${new URL(Astro.request.url).searchParams.get("session")}`
+}
 ---
 
 {
@@ -32,7 +36,10 @@ const isActive = false;
       <ul class="treeview-menu">
         {Astro.props.subItems.map(({ slot, href }) => (
           <li>
-            <a class="treeview-item" href={href}>
+            <a
+              class="treeview-item"
+              href={addSessionToHref(href)}
+            >
               <Icon name="circle-fill" class="icon" />
               {slot}
             </a>
@@ -44,7 +51,7 @@ const isActive = false;
     <li>
       <a
         class:list={["app-menu__item", { active: isActive }]}
-        href={Astro.props.href}
+        href={addSessionToHref(Astro.props.href)}
       >
         <Icon name={Astro.props.iconName} class="app-menu__icon" />
         <span class="app-menu__label">

@@ -2,7 +2,8 @@
   {
     "href": "./app",
     "iconClasses": "bi bi-speedometer",
-    "slot": "Inicio"
+    "slot": "Inicio",
+    "subItems": null
   },
   {
     "href": "./usuarios",
