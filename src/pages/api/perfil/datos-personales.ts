@@ -1,9 +1,10 @@
+import { SESSION_QUERY_PARAM_NAME } from '@/configs';
 import { getUserById, saveUser } from "@/services/user";
 import type { APIRoute } from "astro";
 
 export const POST: APIRoute = async ({ request, redirect }) => {
 	const formData = await request.formData();
-	const id = new URL(request.url).searchParams.get("session");
+	const id = new URL(request.url).searchParams.get(SESSION_QUERY_PARAM_NAME);
 
 	const loggedUser = await getUserById(String(id));
 
@@ -23,5 +24,5 @@ export const POST: APIRoute = async ({ request, redirect }) => {
 		userId: loggedUser.userId,
 	});
 
-	return redirect(`/app/perfil/configurar?session=${loggedUser.id}`);
+	return redirect(`/app/perfil/configurar?${SESSION_QUERY_PARAM_NAME}=${loggedUser.id}`);
 };

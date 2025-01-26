@@ -1,3 +1,4 @@
+import { SESSION_QUERY_PARAM_NAME } from '@/configs';
 import { getUserByEmail } from "@/services/user";
 import type { APIRoute } from "astro";
 import { compare } from "bcrypt";
@@ -12,5 +13,5 @@ export const POST: APIRoute = async ({ request, redirect }) => {
 		return redirect("/ingresar");
 	}
 
-	return redirect(`/app?session=${user?.id}`);
+	return redirect(`/app?${SESSION_QUERY_PARAM_NAME}=${user?.id}`);
 };

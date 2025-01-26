@@ -4,6 +4,7 @@ import Layout from "@/layouts/Layout.astro";
 import Input from "@/components/Input.astro";
 import { htmlPattern, patternTitles } from "@/patterns";
 import type { User } from "@/types";
+import { SESSION_QUERY_PARAM_NAME } from "@/configs";
 
 const { loggedUser } = Astro.locals as { loggedUser: User | null };
 ---
@@ -42,7 +43,7 @@ const { loggedUser } = Astro.locals as { loggedUser: User | null };
             <h4 class="line-head">Datos personales</h4>
             <form
               method="post"
-              action={`/api/perfil/datos-personales?session=${loggedUser?.id}`}
+              action={`/api/perfil/datos-personales?${SESSION_QUERY_PARAM_NAME}=${loggedUser?.id}`}
             >
               <div class="row mb-4">
                 <div class="col-md-6">

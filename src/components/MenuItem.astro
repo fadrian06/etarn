@@ -1,6 +1,7 @@
 ---
 import type { ComponentWithIcon } from "@/types";
 import Icon from "@/components/Icon.astro";
+import { SESSION_QUERY_PARAM_NAME } from "@/configs";
 
 interface SubItem {
   slot: string;
@@ -15,7 +16,7 @@ interface Props extends ComponentWithIcon {
 const isActive = false;
 
 function addSessionToHref(href: string): string {
-  return `${href}?session=${new URL(Astro.request.url).searchParams.get("session")}`
+  return `${href}?${SESSION_QUERY_PARAM_NAME}=${new URL(Astro.request.url).searchParams.get(SESSION_QUERY_PARAM_NAME)}`
 }
 ---
 
@@ -51,7 +52,7 @@ function addSessionToHref(href: string): string {
     <li>
       <a
         class:list={["app-menu__item", { active: isActive }]}
-        href={addSessionToHref(Astro.props.href)}
+        href={addSessionToHref(String(Astro.props.href))}
       >
         <Icon name={Astro.props.iconName} class="app-menu__icon" />
         <span class="app-menu__label">

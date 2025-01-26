@@ -1,5 +1,6 @@
 import { getUserById } from "@/services/user";
 import { defineMiddleware } from "astro:middleware";
+import { SESSION_QUERY_PARAM_NAME } from './configs';
 
 const PUBLIC_URLS = Object.freeze(["ingresar", "registrarse", "api"]);
 
@@ -10,7 +11,7 @@ export const onRequest = defineMiddleware(async (context, next) => {
 		}
 	}
 
-	const id = new URL(context.url).searchParams.get("session");
+	const id = new URL(context.url).searchParams.get(SESSION_QUERY_PARAM_NAME);
 
 	const loggedUser = await getUserById(String(id));
 

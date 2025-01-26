@@ -1,3 +1,4 @@
+import { SESSION_QUERY_PARAM_NAME } from '@/configs';
 import { deleteUserById, saveUser } from "@/services/user";
 import { capitalize } from "@/utils";
 import type { APIRoute } from "astro";
@@ -21,5 +22,5 @@ export const PUT: APIRoute = async ({ request, params: { id }, redirect }) => {
 		userId: String(formData.get("userId")),
 	});
 
-	return redirect("/usuarios");
+	return redirect(`/usuarios?${SESSION_QUERY_PARAM_NAME}=${id}`);
 };
